@@ -1,27 +1,30 @@
+import { useNavigate } from "react-router-dom";
+import { AppContext, useContext } from "./AppContext"
+
+
 function AdoptionLists() {
 
-    return (
-        //<>
-        //    <div className="p-4">
-        //        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3">
-        //            {animals.map((animal) => (
-        //                <div key={animal.id} className="flex flex-col gap-1 cursor-pointer group">
-        //                    <div className="overflow-hidden rounded-xl relative">
-        //                        <img
-        //                            src={animal.image}
-        //                            alt={animal.name}
-        //                            className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
-        //                        />
-        //                    </div>
-        //                    <p className="text-xs font-bold text-white truncate">{animal.name}</p>
-        //                    <p className="text-xs text-gray-400 truncate">{animal.breed} · {animal.age} · {animal.location}</p>
-        //                </div>
-        //            ))}
-        //        </div>
-        //    </div>
-        //</>
-        <></>
-    )
+  const { lists } = useContext(AppContext)
+
+
+  return (
+    <>
+      <div className="grid md:grid-cols-4 xl:grid-cols-5 gap-3">
+        {lists.map((list) => (
+          <div className="flex flex-col cursor-pointer group border rounded-xl border-zinc-600 bg-zinc-950 overflow-hidden">
+            <div className="overflow-hidden">
+              <img src={list.image} className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300" />
+            </div>
+            <div className="p-3 flex flex-col gap-1">
+              <p className="text-sm text-white ">{list.name}</p>
+              <p className="text-xs text-gray-300">{list.breed} · {list.age}</p>
+              <p className="text-xs text-gray-500">{list.location}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
+  )
 }
 
 export default AdoptionLists;
