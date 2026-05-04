@@ -75,15 +75,26 @@ function Profile() {
                             <AvatarImage src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" />
                         </Avatar>
                         <h3>{profile.fullname}</h3>
-                        <div className="w-full space-y-4">
-                            <div className="space-y-1">
-                                <Label className="text-gray-400">Full Name</Label>
-                                <Input
-                                    disabled={isDisabled}
-                                    onChange={(e) => setName(e.target.value)}
-                                    value={fullname}
-                                    className="text-lg font-semibold text-gray-200 placeholder-gray-500"
-                                />
+                        <div className="w-full space-y-3">
+                            <div className="grid grid-cols-2 gap-3">
+                                <div className="space-y-1">
+                                    <Label className="text-gray-400">Full Name</Label>
+                                    <Input
+                                        disabled={isDisabled}
+                                        onChange={(e) => setName(e.target.value)}
+                                        value={fullname}
+                                        className="text-gray-200 placeholder-gray-500"
+                                    />
+                                </div>
+                                <div className="space-y-1">
+                                    <Label className="text-gray-400">Phone</Label>
+                                    <Input
+                                        disabled={isDisabled}
+                                        onChange={(e) => setPhone(e.target.value.replace(/[^\d\s+]/g, ""))}
+                                        value={phone}
+                                        className="text-gray-200 placeholder-gray-500"
+                                    />
+                                </div>
                             </div>
                             <div className="space-y-1">
                                 <Label className="text-gray-400">Email</Label>
@@ -94,50 +105,43 @@ function Profile() {
                                     className="text-gray-200 placeholder-gray-500"
                                 />
                             </div>
-                            <div className="space-y-1">
-                                <Label className="text-gray-400">Phone</Label>
-                                <Input
-                                    disabled={isDisabled}
-                                    onChange={(e) => setPhone(e.target.value.replace(/[^\d\s+]/g, ""))}
-                                    value={phone}
-                                    className="text-gray-200 placeholder-gray-500"
-                                />
-                            </div>
-                            <div className="space-y-1">
-                                <Label className="text-gray-400">Password</Label>
-                                <Input
-                                    disabled={isDisabled}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    type="password"
-                                    value={password || ""}
-                                    className="text-gray-200 placeholder-gray-500"
-                                />
-                            </div>
-                            <div className="space-y-1">
-                                <Label className="text-gray-400">Address</Label>
-                                <Input
-                                    disabled={isDisabled}
-                                    onChange={(e) => setAddress(e.target.value)}
-                                    value={address || ""}
-                                    className="text-gray-200 placeholder-gray-500"
-                                />
+                            <div className="grid grid-cols-2 gap-3">
+                                <div className="space-y-1">
+                                    <Label className="text-gray-400">Password</Label>
+                                    <Input
+                                        disabled={isDisabled}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        type="password"
+                                        value={password || ""}
+                                        className="text-gray-200 placeholder-gray-500"
+                                    />
+                                </div>
+                                <div className="space-y-1">
+                                    <Label className="text-gray-400">Address</Label>
+                                    <Input
+                                        disabled={isDisabled}
+                                        onChange={(e) => setAddress(e.target.value)}
+                                        value={address || ""}
+                                        className="text-gray-200 placeholder-gray-500"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </CardHeader>
                     <CardFooter className="bg-zinc-950 justify-center gap-4 mt-6 pb-6">
                         {isDisabled ? (
                             <Button onClick={() => setIsDisabled(false)}
-                                className="border border-black px-6 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-200">
+                                className="px-6 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-200">
                                 Edit
                             </Button>
                         ) : (
                             <>
                                 <Button onClick={() => setIsDisabled(true)}
-                                    className="border border-black px-6 rounded-full bg-gray-200 text-gray-800 hover:bg-gray-300 transition-all duration-200">
+                                    className="px-6 rounded-full bg-gray-200 text-gray-800 hover:bg-gray-300 transition-all duration-200">
                                     Cancel
                                 </Button>
                                 <Button onClick={changeProfileInfos}
-                                    className="border border-black px-6 rounded-full bg-green-600 text-white hover:bg-green-700 transition-all duration-200">
+                                    className="px-6 rounded-full bg-green-600 text-white hover:bg-green-700 transition-all duration-200">
                                     Save
                                 </Button>
                             </>

@@ -4,6 +4,7 @@ import Login from './Login';
 import Register from './Register';
 import Profile from './Profile';
 import AdoptionLists from './AdoptionLists';
+import UserForms from './UserForms';
 
 import { AppContext } from './AppContext';
 
@@ -101,6 +102,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/adoptionlists' element={<AdoptionLists />} />
+          <Route path='/forms' element={<UserForms />} />
         </Routes>
       </AppContext.Provider>
     </>

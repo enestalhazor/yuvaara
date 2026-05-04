@@ -63,7 +63,6 @@ function Register() {
         })
     }
 
-
     return (
         <>
             <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -75,46 +74,54 @@ function Register() {
                         <CardTitle>Register</CardTitle>
                         <CardDescription></CardDescription>
                     </CardHeader>
-                    <CardContent className="flex flex-col gap-4">
-                        <div className="flex flex-col gap-1.5">
-                            <Label>FullName</Label>
-                            <Input
-                                onChange={(e) => setName(e.target.value)}
-                                type="text"
-                                placeholder="Yuvaara"
-                                onKeyDown={(e) => {
-                                    if (!/^[a-zA-ZğüşıöçĞÜŞİÖÇ\s]$/.test(e.key) && e.key !== "Backspace") {
-                                        e.preventDefault();
-                                    }
-                                }}
-                            />
+                    <CardContent className="flex flex-col gap-3">
+                        <div className="grid grid-cols-2 gap-3">
+                            <div className="flex flex-col gap-1.5">
+                                <Label>Full Name</Label>
+                                <Input
+                                    onChange={(e) => setName(e.target.value)}
+                                    type="text"
+                                    placeholder="Yuvaara"
+                                    onKeyDown={(e) => {
+                                        if (!/^[a-zA-ZğüşıöçĞÜŞİÖÇ\s]$/.test(e.key) && e.key !== "Backspace") {
+                                            e.preventDefault();
+                                        }
+                                    }}
+                                />
+                            </div>
+                            <div className="flex flex-col gap-1.5">
+                                <Label>Phone</Label>
+                                <Input
+                                    value={phone}
+                                    type="text"
+                                    placeholder="+90 (555) 000-0000"
+                                    onChange={(e) => setPhone(e.target.value.replace(/[^\d\s+]/g, ""))}
+                                />
+                            </div>
                         </div>
                         <div className="flex flex-col gap-1.5">
                             <Label>Email</Label>
                             <Input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="yuvaara@example.com" />
                         </div>
-                        <Label>Phone</Label>
-                        <Input
-                            value={phone}
-                            type="text"
-                            placeholder="+90 (555) 000-0000"
-                            onChange={(e) => setPhone(e.target.value.replace(/[^\d\s+]/g, ""))}
-                        />
-                        <div className="flex flex-col gap-1.5">
-                            <Label>Password</Label>
-                            <Input onChange={(e) => setPassword(e.target.value)} minLength={6} maxLength={25} type="password" placeholder="••••••••" />
+                        <div className="grid grid-cols-2 gap-3">
+                            <div className="flex flex-col gap-1.5">
+                                <Label>Password</Label>
+                                <Input onChange={(e) => setPassword(e.target.value)} minLength={6} maxLength={25} type="password" placeholder="••••••••" />
+                            </div>
+                            <div className="flex flex-col gap-1.5">
+                                <Label>Date of Birth</Label>
+                                <Input
+                                    value={dateOfBirth}
+                                    onChange={(e) => setDateOfBirth(e.target.value)}
+                                    max={new Date().toISOString().split("T")[0]}
+                                    type="date"
+                                />
+                            </div>
                         </div>
                         <div className="flex flex-col gap-1.5">
-                            <Label>Adress</Label>
+                            <Label>Address</Label>
                             <Input onChange={(e) => setAddress(e.target.value)} type="text" placeholder="Türkiye/Ankara" />
                         </div>
-                        <Label>Date of Birth</Label>
-                        <Input
-                            value={dateOfBirth}
-                            onChange={(e) => setDateOfBirth(e.target.value)}
-                            max={new Date().toISOString().split("T")[0]}
-                            type="date"
-                        />
                         <div className="flex flex-col gap-1.5">
                             <Label>Profile Picture</Label>
                             <Input id="picture" type="file" ref={inputFileRef}
