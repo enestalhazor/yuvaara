@@ -4,20 +4,17 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import TextLogo from "./TextLogo"
 
-import { jwtDecode } from 'jwt-decode';
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { AppContext, useContext } from "./AppContext"
-import { backendBaseUrl } from './env';
+import { backendBaseUrl } from './env'
 
 function Login() {
-
-    const navigate = useNavigate()
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
     const [error, setError] = useState("")
-    const { setToken, setProfile } = useContext(AppContext)
-
+    const { setToken, setProfile, navigate } = useContext(AppContext)
 
     function loginHandler(val) {
         if (val.status === 200) {
@@ -65,30 +62,38 @@ function Login() {
             <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
                 <div className="absolute w-96 h-96 bg-green-600 rounded-full blur-3xl opacity-20 -top-20 -left-20" />
                 <div className="absolute w-96 h-96 bg-orange-600 rounded-full blur-3xl opacity-20 -bottom-20 -right-20" />
-                <Card className="w-full max-w-sm bg-black">
-                    <CardHeader>
-                        <TextLogo />
-                        <CardTitle>Welcome</CardTitle>
-                        <CardDescription>Sign in</CardDescription>
-                    </CardHeader>
-                    <CardContent className="flex flex-col gap-4">
-                        <div className="flex flex-col gap-1.5">
-                            <Label>Email</Label>
-                            <Input type="email" onChange={(e) => setEmail(e.target.value)} placeholder="yuvaara@example.com" />
-                        </div>
-                        <div className="flex flex-col gap-1.5">
-                            <Label>Password</Label>
-                            <Input minLength={6} maxLength={25} type="password" onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" />
-                        </div>
-                        <Button onClick={handleSubmit} className=" w-full bg-green-800">Sign in</Button>
-                    </CardContent>
-                    <CardFooter className="justify-center text-sm bg-black">
-                        Don't have an account?
-                        <Link to="/register" className="ml-1 text-foreground underline underline-offset-2 hover:opacity-80">
-                            Sign up
-                        </Link>
-                    </CardFooter>
-                </Card>
+                <div className="flex flex-col w-full max-w-sm">
+                    <button
+                        onClick={() => navigate('/')}
+                        className="text-xs text-zinc-500 hover:text-white mb-2 transition-colors self-start"
+                    >
+                        ← Back
+                    </button>
+                    <Card className="w-full max-w-sm bg-black">
+                        <CardHeader>
+                            <TextLogo />
+                            <CardTitle>Welcome</CardTitle>
+                            <CardDescription>Sign in</CardDescription>
+                        </CardHeader>
+                        <CardContent className="flex flex-col gap-4">
+                            <div className="flex flex-col gap-1.5">
+                                <Label>Email</Label>
+                                <Input type="email" onChange={(e) => setEmail(e.target.value)} placeholder="yuvaara@example.com" />
+                            </div>
+                            <div className="flex flex-col gap-1.5">
+                                <Label>Password</Label>
+                                <Input minLength={6} maxLength={25} type="password" onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" />
+                            </div>
+                            <Button onClick={handleSubmit} className=" w-full bg-green-800">Sign in</Button>
+                        </CardContent>
+                        <CardFooter className="justify-center text-sm bg-black">
+                            Don't have an account?
+                            <Link to="/register" className="ml-1 text-foreground underline underline-offset-2 hover:opacity-80">
+                                Sign up
+                            </Link>
+                        </CardFooter>
+                    </Card>
+                </div>
             </div>
         </>
     )

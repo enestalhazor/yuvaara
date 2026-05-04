@@ -1,10 +1,9 @@
-import Header from "./Header";
-import AdoptionLists from "./AdoptionLists";
-import { useContext, useEffect } from "react";
-import { AppContext } from "./AppContext";
+import Header from "./Header"
+import AdoptionLists from "./AdoptionLists"
+import { useContext, useEffect } from "react"
+import { AppContext } from "./AppContext"
 
 function HomePage() {
-
     const { error, fetchLists } = useContext(AppContext)
 
     useEffect(() => {

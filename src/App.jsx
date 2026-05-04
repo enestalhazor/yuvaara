@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import HomePage from './HomePage';
-import Login from './Login';
-import Register from './Register';
-import Profile from './Profile';
-import AdoptionLists from './AdoptionLists';
-import UserForms from './UserForms';
+import React, { useEffect, useState } from 'react'
+import HomePage from './HomePage'
+import Login from './Login'
+import Register from './Register'
+import Profile from './Profile'
+import AdoptionLists from './AdoptionLists'
+import AdoptionList from './AdoptionList'
+import UserForms from './UserForms'
 
-import { AppContext } from './AppContext';
-
+import { AppContext } from './AppContext'
 import {
   Routes,
   Route,
@@ -17,7 +17,6 @@ import { jwtDecode } from 'jwt-decode';
 import { backendBaseUrl } from './env';
 
 function App() {
-
   const [token, setToken] = useState("")
   const [isTokenCheckDone, setIsTokenCheckDone] = useState(false)
   const [profile, setProfile] = useState(null)
@@ -102,6 +101,7 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/adoptionlists' element={<AdoptionLists />} />
+          <Route path='/adoptionlist/:id' element={<AdoptionList />} />
           <Route path='/forms' element={<UserForms />} />
         </Routes>
       </AppContext.Provider>

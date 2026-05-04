@@ -1,18 +1,16 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 import { AppContext, useContext } from "./AppContext"
 
 
 function AdoptionLists() {
-
-  const { lists } = useContext(AppContext)
-
+  const { lists, navigate } = useContext(AppContext)
 
   return (
     <>
       <div className="grid md:grid-cols-4 xl:grid-cols-5 gap-3">
         {lists.map((list) => (
           <div key={list.id} className="flex flex-col cursor-pointer bg-zinc-950 group rounded-xl overflow-hidden">
-            <div className="overflow-hidden">
+            <div onClick={() => navigate(`/adoptionlist/${list.id}`, { state: { list } })} className="overflow-hidden">
               <img src={list.image} className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300" />
             </div>
             <div className="p-3 flex flex-col gap-1">

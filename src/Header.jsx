@@ -1,16 +1,13 @@
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { useNavigate } from "react-router-dom"
 import { useContext, useState } from "react"
 import { Search } from "lucide-react"
 import TextLogo from "./TextLogo"
 import { AppContext } from "./AppContext"
 
 function Header() {
-
     const [isOpen, setOpen] = useState(false)
-    const navigate = useNavigate()
-    const { profile, logOut, token } = useContext(AppContext)
+    const { profile, logOut, token, navigate } = useContext(AppContext)
 
     return (
         <div className="flex items-center justify-between px-6 py-3 bg-zinc-950 border-b border-zinc-800/60 select-none backdrop-blur-sm">
