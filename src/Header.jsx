@@ -1,25 +1,53 @@
 import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
 import { useContext, useState } from "react"
 import { Search } from "lucide-react"
 import TextLogo from "./TextLogo"
 import { AppContext } from "./AppContext"
+import { backendBaseUrl } from "./env"
+import { FilterX } from "lucide-react"
 
 function Header() {
     const [isOpen, setOpen] = useState(false)
-    const { profile, logOut, token, navigate } = useContext(AppContext)
+    const [isFiltered, setIsFiltered] = useState(false)
+    const [term, setTerm] = useState("")
+    const { profile, logOut, token, navigate, setLists, fetchLists } = useContext(AppContext)
+
+    const doFilterLists = () => {
+
+        if (term == null || term == "") {
+            return;
+        }
+
+        fetch(`${backendBaseUrl}/adoptionlists/${term}`)
+            .then(function (val) {
+                val.json().then(function (a) {
+                    console.log(a)
+                    setLists(a)
+                    setIsFiltered(true)
+                })
+            })
+    }
 
     return (
         <div className="flex items-center justify-between px-6 py-3 bg-zinc-950 border-b border-zinc-800/60 select-none backdrop-blur-sm">
             <TextLogo />
             <div className="flex items-center w-full max-w-md mx-6 gap-3">
+                {isFiltered && (
+                    <button
+                        onClick={() => { fetchLists(), setIsFiltered(false) }}
+                        className="text-xs text-zinc-500 hover:text-white mb-2 transition-colors self-start"
+                    >
+                        <FilterX />
+                    </button>
+                )}
                 <div className="relative flex items-center w-full">
                     <Input
+                        onChange={(e) => setTerm(e.target.value)}
                         type="search"
                         placeholder="Search..."
                         className="h-7 rounded-xl pr-8 bg-zinc-900 border border-zinc-700 text-zinc-200 placeholder:text-zinc-500"
                     />
-                    <button className="absolute right-2 text-zinc-500 hover:text-amber-400 transition-colors">
+                    <button onClick={() => doFilterLists()} className="absolute right-2 text-zinc-500 hover:text-amber-400 transition-colors">
                         <Search size={14} />
                     </button>
                 </div>

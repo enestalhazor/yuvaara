@@ -84,6 +84,7 @@ function App() {
     setError,
     error,
     fetchLists,
+    setLists,
     lists,
     logOut,
     navigate

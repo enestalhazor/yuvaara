@@ -17,7 +17,7 @@ function AdoptionList() {
         <div className="min-h-screen bg-black px-4 pt-12">
             <div className="max-w-5xl mx-auto">
                 <button
-                    onClick={() => navigate('/')}
+                    onClick={() => navigate(-1)}
                     className="text-xs text-zinc-500 hover:text-white mb-6 transition-colors block"
                 >
                     ← Back
