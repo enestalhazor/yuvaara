@@ -2,6 +2,7 @@ import Header from "./Header"
 import AdoptionLists from "./AdoptionLists"
 import { useContext, useEffect } from "react"
 import { AppContext } from "./AppContext"
+import { Sidebar } from "lucide-react"
 
 function HomePage() {
     const { error, fetchLists } = useContext(AppContext)

@@ -67,7 +67,7 @@ function Profile() {
             <div className="flex flex-col items-center min-h-screen p-6 bg-black relative overflow-hidden">
                 <div className="flex flex-col w-full max-w-sm">
                     <button
-                        onClick={() => navigate('/')}
+                        onClick={() => navigate(-1)}
                         className="text-xs text-zinc-500 hover:text-white mb-2 transition-colors self-start"
                     >
                         ← Back
@@ -101,15 +101,6 @@ function Profile() {
                                         />
                                     </div>
                                 </div>
-                                <div className="space-y-1">
-                                    <Label className="text-gray-400">Email</Label>
-                                    <Input
-                                        disabled={isDisabled}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        value={email}
-                                        className="text-gray-200 placeholder-gray-500"
-                                    />
-                                </div>
                                 <div className="grid grid-cols-2 gap-3">
                                     <div className="space-y-1">
                                         <Label className="text-gray-400">Password</Label>
@@ -122,14 +113,24 @@ function Profile() {
                                         />
                                     </div>
                                     <div className="space-y-1">
-                                        <Label className="text-gray-400">Address</Label>
+                                        <Label className="text-gray-400">Email</Label>
                                         <Input
                                             disabled={isDisabled}
-                                            onChange={(e) => setAddress(e.target.value)}
-                                            value={address || ""}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            value={email}
                                             className="text-gray-200 placeholder-gray-500"
                                         />
+
                                     </div>
+                                </div>
+                                <div className="space-y-1">
+                                    <Label className="text-gray-400">Address</Label>
+                                    <Input
+                                        disabled={isDisabled}
+                                        onChange={(e) => setAddress(e.target.value)}
+                                        value={address || ""}
+                                        className="text-gray-200 placeholder-gray-500"
+                                    />
                                 </div>
                             </div>
                         </CardHeader>

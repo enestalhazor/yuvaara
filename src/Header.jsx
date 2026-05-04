@@ -23,9 +23,6 @@ function Header() {
                         <Search size={14} />
                     </button>
                 </div>
-                <Button onClick={() => { navigate("/list") }} className="bg-orange-700 whitespace-nowrap">
-                    Create Listing
-                </Button>
             </div>
             <div className="relative text-center flex flex-col items-center">
                 <img
@@ -43,9 +40,6 @@ function Header() {
                                 </div>
                                 <div className="px-4 py-2.5 text-sm text-zinc-300 hover:bg-zinc-800/80 hover:text-amber-700 cursor-pointer transition-colors rounded-lg mx-1" onClick={() => navigate("/forms")}>
                                     My Forms
-                                </div>
-                                <div className="px-4 py-2.5 text-sm text-zinc-300 hover:bg-zinc-800/80 hover:text-amber-700 cursor-pointer transition-colors rounded-lg mx-1" onClick={() => navigate("/lists")}>
-                                    My Lists
                                 </div>
                                 <hr className="border-zinc-800 my-1 mx-2" />
                                 <div className="px-4 py-2.5 text-sm text-red-400 hover:bg-zinc-800/80 hover:text-red-700 cursor-pointer transition-colors rounded-lg mx-1" onClick={logOut}>

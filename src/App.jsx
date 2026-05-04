@@ -15,6 +15,7 @@ import {
 } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import { backendBaseUrl } from './env';
+import Form from './Form'
 
 function App() {
   const [token, setToken] = useState("")
@@ -103,6 +104,7 @@ function App() {
           <Route path='/adoptionlists' element={<AdoptionLists />} />
           <Route path='/adoptionlist/:id' element={<AdoptionList />} />
           <Route path='/forms' element={<UserForms />} />
+          <Route path='/form' element={<Form />} />
         </Routes>
       </AppContext.Provider>
     </>

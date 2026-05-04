@@ -64,7 +64,7 @@ function Login() {
                 <div className="absolute w-96 h-96 bg-orange-600 rounded-full blur-3xl opacity-20 -bottom-20 -right-20" />
                 <div className="flex flex-col w-full max-w-sm">
                     <button
-                        onClick={() => navigate('/')}
+                        onClick={() => navigate(-1)}
                         className="text-xs text-zinc-500 hover:text-white mb-2 transition-colors self-start"
                     >
                         ← Back
