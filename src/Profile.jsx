@@ -77,7 +77,10 @@ function Profile() {
                         <CardHeader className="flex flex-col items-center gap-4 pt-4">
                             <TextLogo />
                             <Avatar className="w-20 h-20 border border-primary/20">
-                                <AvatarImage src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" />
+                                <AvatarImage src={profile?.profile_picture_url
+                                    ? `${backendStaticUP}/${profile.profile_picture_url}`
+                                    : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`
+                                } />
                             </Avatar>
                             <h3>{profile.fullname}</h3>
                             <div className="w-full space-y-3">

@@ -3,7 +3,7 @@ import { useContext, useState } from "react"
 import { Search } from "lucide-react"
 import TextLogo from "./TextLogo"
 import { AppContext } from "./AppContext"
-import { backendBaseUrl } from "./env"
+import { backendBaseUrl, backendStaticUP } from "./env"
 import { FilterX } from "lucide-react"
 
 function Header() {
@@ -54,7 +54,10 @@ function Header() {
             </div>
             <div className="relative text-center flex flex-col items-center">
                 <img
-                    src={`https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`}
+                    src={profile?.profile_picture_url
+                        ? `${backendStaticUP}/${profile.profile_picture_url}`
+                        : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`
+                    }
                     className="w-10 h-10 rounded-full cursor-pointer ring-2 ring-amber-500/40 hover:ring-amber-400 transition-all"
                     onClick={() => setOpen(!isOpen)}
                 />
