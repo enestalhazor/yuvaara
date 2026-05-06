@@ -53,8 +53,13 @@ function Register() {
                 }
                 else {
                     res.text().then((text) => {
-                        setError(text)
-                        console.log(error)
+                        try {
+                            const parsed = JSON.parse(text);
+                            setError(parsed.info || text);
+                        } catch {
+                            setError(text);
+                            console.log(text)
+                        }
                     })
                 }
                 console.log(res)
@@ -63,6 +68,14 @@ function Register() {
 
     return (
         <>
+            {error && (
+                <div
+                    onAnimationEnd={() => setError("")}
+                    className="fixed top-6 left-1/2 -translate-x-1/2 bg-red-900/40 border border-red-500/30 text-red-400 text-xs px-4 py-2.5 rounded-xl animate-fade-out"
+                >
+                    {error}
+                </div>
+            )}
             <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
                 <div className="absolute w-96 h-96 bg-orange-600 rounded-full blur-3xl opacity-20 -top-20 -left-20" />
                 <div className="absolute w-96 h-96 bg-green-600 rounded-full blur-3xl opacity-20 -bottom-20 -right-20" />

@@ -17,11 +17,10 @@ function HomePage() {
                     <Header />
                 </div>
                 <div className="flex justify-center flex-1">
-                    <div className="w-4/5 min-w-[180px] m-2 overflow-hidden">
+                    <div className="w-4/5 min-w-[180px] m-2">
                         <AdoptionLists />
                     </div>
                 </div>
-
             </div>
         </>
     )

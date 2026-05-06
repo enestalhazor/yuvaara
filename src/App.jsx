@@ -37,8 +37,13 @@ function App() {
         }
         else {
           res.text().then((text) => {
-            setError(text)
-            console.log(error)
+            try {
+              const parsed = JSON.parse(text);
+              setError(parsed.info || text);
+            } catch {
+              setError(text);
+              console.log(text)
+            }
           })
         }
       })

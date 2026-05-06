@@ -39,6 +39,16 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      animation: {
+        "fade-out": "fadeOut 3s ease-in-out forwards",
+      },
+      keyframes: {
+        fadeOut: {
+          "0%": { opacity: "1" },
+          "70%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
+      },
     },
   },
   plugins: [],

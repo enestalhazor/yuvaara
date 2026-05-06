@@ -41,8 +41,13 @@ function UserForms() {
                 }
                 else {
                     res.text().then((text) => {
-                        setError(text)
-                        console.log(error)
+                        try {
+                            const parsed = JSON.parse(text);
+                            setError(parsed.info || text);
+                        } catch {
+                            setError(text);
+                            console.log(text)
+                        }
                     })
                 }
             })
@@ -54,6 +59,14 @@ function UserForms() {
 
     return (
         <>
+            {error && (
+                <div
+                    onAnimationEnd={() => setError("")}
+                    className="fixed top-6 left-1/2 -translate-x-1/2 bg-red-900/40 border border-red-500/30 text-red-400 text-xs px-4 py-2.5 rounded-xl animate-fade-out"
+                >
+                    {error}
+                </div>
+            )}
             <div className="min-h-screen flex flex-col items-center px-4 pt-12">
                 <div className="flex flex-col w-full max-w-xl">
                     <button

@@ -59,16 +59,26 @@ function Profile() {
                             }
                             else {
                                 res.text().then((text) => {
-                                    setError(text)
-                                    console.log(error)
+                                    try {
+                                        const parsed = JSON.parse(text);
+                                        setError(parsed.info || text);
+                                    } catch {
+                                        setError(text);
+                                        console.log(text)
+                                    }
                                 })
                             }
                         })
                 }
                 else {
                     res.text().then((text) => {
-                        setError(text)
-                        console.log(error)
+                        try {
+                            const parsed = JSON.parse(text);
+                            setError(parsed.info || text);
+                        } catch {
+                            setError(text);
+                            console.log(text)
+                        }
                     })
                 }
             })
@@ -76,6 +86,14 @@ function Profile() {
 
     return (
         <>
+            {error && (
+                <div
+                    onAnimationEnd={() => setError("")}
+                    className="fixed top-6 left-1/2 -translate-x-1/2 bg-red-900/40 border border-red-500/30 text-red-400 text-xs px-4 py-2.5 rounded-xl animate-fade-out z-50"
+                >
+                    {error}
+                </div>
+            )}
             <div className="flex flex-col items-center min-h-screen p-6 bg-black relative overflow-hidden">
                 <div className="flex flex-col w-full max-w-sm">
                     <button
