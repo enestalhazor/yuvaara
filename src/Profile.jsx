@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import TextLogo from "./TextLogo"
 import { AppContext, useContext } from "./AppContext"
-import { backendBaseUrl } from './env'
+import { backendBaseUrl, backendStaticUP } from './env'
 
 function Profile() {
     const { profile, token, setProfile, navigate } = useContext(AppContext)
@@ -37,29 +37,41 @@ function Profile() {
             formData.append("address", address)
         }
 
-        const promise = fetch(`${backendBaseUrl}/users/` + profile.id, {
+        fetch(`${backendBaseUrl}/users/${profile.id}`, {
             method: "PUT",
             body: formData,
             headers: { "Authorization": "Bearer " + token }
         })
-        promise.then((res) => {
-            if (res.status !== 200) {
-                res.text().then((text) => {
-                    setError(text)
-                })
-            }
-            setError("")
-            setIsDisabled(a => !a)
-            const promise2 = fetch(`${backendBaseUrl}/users/` + profile.id, {
-                headers: { "Authorization": "Bearer " + token }
+            .then(res => {
+                if (res.status === 200) {
+                    setError("")
+                    setIsDisabled(a => !a)
+                    return fetch(`${backendBaseUrl}/users/${profile.id}`, {
+                        headers: { "Authorization": "Bearer " + token }
+                    })
+                        .then(res => {
+                            if (res.status === 200) {
+                                setError("")
+                                return res.json().then(data => {
+                                    console.log(data)
+                                    setProfile(data)
+                                })
+                            }
+                            else {
+                                res.text().then((text) => {
+                                    setError(text)
+                                    console.log(error)
+                                })
+                            }
+                        })
+                }
+                else {
+                    res.text().then((text) => {
+                        setError(text)
+                        console.log(error)
+                    })
+                }
             })
-            promise2.then(function (val) {
-                val.json().then(function (a) {
-                    console.log(a)
-                    setProfile(a)
-                })
-            })
-        })
     }
 
     return (

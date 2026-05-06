@@ -25,18 +25,26 @@ function Login() {
                 const decodedToken = jwtDecode(token)
                 const id = decodedToken.id
 
-                const promise2 = fetch(`${backendBaseUrl}/users/` + id, {
+                fetch(`${backendBaseUrl}/users/${id}`, {
                     headers: { "Authorization": "Bearer " + a.token }
                 })
-                promise2.then(function (val) {
-                    val.json().then(function (a) {
-                        console.log(a)
-                        setProfile(a)
-                        navigate("/")
-                        setError("")
-                        localStorage.setItem("token", "Bearer " + token)
+                    .then(res => {
+                        if (res.status === 200) {
+                            setError("")
+                            return res.json().then(data => {
+                                console.log(data)
+                                setProfile(data)
+                                navigate("/")
+                                localStorage.setItem("token", "Bearer " + token)
+                            })
+                        }
+                        else {
+                            res.text().then((text) => {
+                                setError(text)
+                                console.log(error)
+                            })
+                        }
                     })
-                })
             })
         }
         else {

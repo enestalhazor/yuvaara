@@ -4,7 +4,7 @@ import { useContext, useEffect } from "react"
 import { AppContext } from "./AppContext"
 
 function HomePage() {
-    const { error, fetchLists } = useContext(AppContext)
+    const { fetchLists } = useContext(AppContext)
 
     useEffect(() => {
         fetchLists()

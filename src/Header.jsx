@@ -10,6 +10,8 @@ function Header() {
     const [isOpen, setOpen] = useState(false)
     const [isFiltered, setIsFiltered] = useState(false)
     const [term, setTerm] = useState("")
+    const [error, setError] = useState("")
+
     const { profile, logOut, token, navigate, setLists, fetchLists } = useContext(AppContext)
 
     const doFilterLists = () => {
@@ -19,12 +21,21 @@ function Header() {
         }
 
         fetch(`${backendBaseUrl}/adoptionlists/${term}`)
-            .then(function (val) {
-                val.json().then(function (a) {
-                    console.log(a)
-                    setLists(a)
-                    setIsFiltered(true)
-                })
+            .then(res => {
+                if (res.status === 200) {
+                    setError("")
+                    return res.json().then(data => {
+                        console.log(data)
+                        setLists(data)
+                        setIsFiltered(true)
+                    })
+                }
+                else {
+                    res.text().then((text) => {
+                        setError(text)
+                        console.log(error)
+                    })
+                }
             })
     }
 

@@ -36,30 +36,29 @@ function Register() {
 
         console.log("profilePicture:", profilePictureUrl)
 
-        const promise = fetch(`${backendBaseUrl}/users`, {
+        fetch(`${backendBaseUrl}/users`, {
             method: "POST",
             body: formData,
         })
-
-        promise.then((res) => {
-            if (res.status === 200) {
-                setName("")
-                setEmail("")
-                setPassword("")
-                setProfilePictureUrl(null)
-                setError("")
-                setDateOfBirth("")
-                inputFileRef.current.value = null
-                navigate("/login")
-            }
-            else {
-                res.text().then((text) => {
-                    console.log(text)
-                    setError(text)
-                })
-            }
-            console.log(res)
-        })
+            .then(res => {
+                if (res.status === 200) {
+                    setError("")
+                    setName("")
+                    setEmail("")
+                    setPassword("")
+                    setProfilePictureUrl(null)
+                    setDateOfBirth("")
+                    inputFileRef.current.value = null
+                    navigate("/login")
+                }
+                else {
+                    res.text().then((text) => {
+                        setError(text)
+                        console.log(error)
+                    })
+                }
+                console.log(res)
+            })
     }
 
     return (

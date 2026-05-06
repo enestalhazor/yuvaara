@@ -8,11 +8,14 @@ function AdoptionList() {
     const { navigate } = useContext(AppContext);
     const list = state?.list;
 
-    if (!list) return <div className="text-white text-center mt-10">Not found.</div>;
+    if (!list) {
+        return <div className="text-white text-center mt-10">Not found.</div>
+    }
 
-    const statusColor = list.status === "Available"
-        ? "bg-green-900/30 text-green-400"
-        : "bg-red-900/30 text-red-400";
+    const statusColor = {
+        Available: "bg-green-900/30 text-green-400 rounded-lg",
+        Adopted: "bg-red-900/30 text-red-400 rounded-lg",
+    };
 
     return (
         <div className="min-h-screen bg-black px-4 pt-12">
@@ -36,9 +39,8 @@ function AdoptionList() {
                                 <div className="flex items-start justify-between mb-4">
                                     <div>
                                         <p className="text-xl font-semibold text-white">{list.name}</p>
-                                        <p className="text-xs text-zinc-500 mt-1">{list.breed} · {list.location}</p>
                                     </div>
-                                    <span className={`text-xs font-medium px-3 py-1 rounded-full ${statusColor}`}>
+                                    <span className={statusColor[list.status] ?? "bg-gray-900/30 text-gray-400"}>
                                         {list.status}
                                     </span>
                                 </div>
@@ -61,7 +63,7 @@ function AdoptionList() {
                         </div>
                     </div>
                     <div className="w-80 flex-shrink-0">
-                        <Form listId={list.id} />
+                        <Form listId={list.id} status={list.status} />
                     </div>
                 </div>
             </div>

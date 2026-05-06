@@ -2,7 +2,7 @@ import { useState } from "react";
 import { backendBaseUrl } from "./env";
 import { useContext, AppContext } from "./AppContext";
 
-function Form({ listId }) {
+function Form({ listId, status }) {
     const { token } = useContext(AppContext);
     const [message, setMessage] = useState("");
     const [success, setSuccess] = useState(false);
@@ -50,12 +50,14 @@ function Form({ listId }) {
                             className="bg-zinc-900 border border-white/10 rounded-xl p-3 text-sm text-white placeholder:text-zinc-600 resize-none h-32 outline-none focus:border-white/20"
                         />
                     </div>
-                    <button
-                        onClick={handleSubmit}
-                        className="w-full py-2.5 bg-green-800 hover:bg-green-900 text-white text-sm font-medium rounded-xl transition-colors"
-                    >
-                        Submit
-                    </button>
+                    {status != "Adopted" && (
+                        <button
+                            onClick={handleSubmit}
+                            className="w-full py-2.5 bg-green-800 hover:bg-green-900 text-white text-sm font-medium rounded-xl transition-colors"
+                        >
+                            Submit
+                        </button>
+                    )}
                 </>
             )}
         </div>
