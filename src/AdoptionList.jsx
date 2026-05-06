@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom"
-import { AppContext, useContext } from "./AppContext"
+import { AppContext, useContext } from "./lib/AppContext"
 import Form from "./Form";
-import { backendStaticPP } from "./env";
+import { backendStaticPP } from "./lib/env";
 
 function AdoptionList() {
     const { state } = useLocation();

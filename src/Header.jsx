@@ -2,8 +2,8 @@ import { Input } from "@/components/ui/input"
 import { useContext, useState } from "react"
 import { Search } from "lucide-react"
 import TextLogo from "./TextLogo"
-import { AppContext } from "./AppContext"
-import { backendBaseUrl, backendStaticUP } from "./env"
+import { AppContext } from "./lib/AppContext"
+import { backendBaseUrl, backendStaticUP } from "./lib/env"
 import { FilterX } from "lucide-react"
 
 function Header() {

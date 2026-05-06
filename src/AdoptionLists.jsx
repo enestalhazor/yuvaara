@@ -1,5 +1,5 @@
-import { AppContext, useContext } from "./AppContext"
-import { backendStaticPP } from "./env";
+import { AppContext, useContext } from "./lib/AppContext"
+import { backendStaticPP } from "./lib/env";
 
 
 function AdoptionLists() {

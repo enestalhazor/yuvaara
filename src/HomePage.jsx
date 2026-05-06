@@ -1,7 +1,7 @@
 import Header from "./Header"
 import AdoptionLists from "./AdoptionLists"
 import { useContext, useEffect } from "react"
-import { AppContext } from "./AppContext"
+import { AppContext } from "./lib/AppContext"
 
 function HomePage() {
     const { fetchLists } = useContext(AppContext)

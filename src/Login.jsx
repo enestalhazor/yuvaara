@@ -7,8 +7,8 @@ import TextLogo from "./TextLogo"
 import { jwtDecode } from 'jwt-decode'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { AppContext, useContext } from "./AppContext"
-import { backendBaseUrl } from './env'
+import { AppContext, useContext } from "./lib/AppContext"
+import { backendBaseUrl } from './lib/env'
 
 function Login() {
     const [password, setPassword] = useState("")

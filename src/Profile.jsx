@@ -6,8 +6,8 @@ import { useState } from "react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import TextLogo from "./TextLogo"
-import { AppContext, useContext } from "./AppContext"
-import { backendBaseUrl, backendStaticUP } from './env'
+import { AppContext, useContext } from "./lib/AppContext"
+import { backendBaseUrl, backendStaticUP } from './lib/env'
 
 function Profile() {
     const { profile, token, setProfile, navigate } = useContext(AppContext)

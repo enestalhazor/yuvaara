@@ -7,14 +7,14 @@ import AdoptionLists from './AdoptionLists'
 import AdoptionList from './AdoptionList'
 import UserForms from './UserForms'
 
-import { AppContext } from './AppContext'
+import { AppContext } from './lib/AppContext'
 import {
   Routes,
   Route,
   useNavigate,
 } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
-import { backendBaseUrl } from './env';
+import { backendBaseUrl } from './lib/env';
 import Form from './Form'
 
 function App() {

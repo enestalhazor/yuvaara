@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { backendBaseUrl } from "./env";
-import { useContext, AppContext } from "./AppContext";
+import { backendBaseUrl } from "./lib/env";
+import { useContext, AppContext } from "./lib/AppContext";
 
 function Form({ listId, status }) {
     const { token } = useContext(AppContext);

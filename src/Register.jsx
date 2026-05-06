@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import TextLogo from "./TextLogo"
-import { backendBaseUrl } from './env'
-import { Link, useNavigate } from 'react-router-dom'
+import { backendBaseUrl } from './lib/env'
+import { Link } from 'react-router-dom'
 import { useRef, useState } from "react"
-import { AppContext, useContext } from "./AppContext"
+import { AppContext, useContext } from "./lib/AppContext"
 
 function Register() {
     const inputFileRef = useRef(null)
