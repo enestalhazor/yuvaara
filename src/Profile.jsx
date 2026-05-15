@@ -89,98 +89,97 @@ function Profile() {
             {error && (
                 <div
                     onAnimationEnd={() => setError("")}
-                    className="fixed top-6 left-1/2 -translate-x-1/2 bg-red-900/40 border border-red-500/30 text-red-400 text-xs px-4 py-2.5 rounded-xl animate-fade-out z-50"
+                    className="fixed top-6 left-1/2 -translate-x-1/2 bg-red-50 border border-red-200 text-red-800 text-xs px-4 py-2.5 rounded-xl animate-fade-out z-50"
                 >
                     {error}
                 </div>
             )}
-            <div className="flex flex-col items-center min-h-screen p-6 bg-black relative overflow-hidden">
+            <div className="flex flex-col items-center min-h-screen p-6 bg-stone-200 relative overflow-hidden">
                 <div className="flex flex-col w-full max-w-sm">
                     <button
                         onClick={() => navigate(-1)}
-                        className="text-xs text-zinc-500 hover:text-white mb-2 transition-colors self-start"
+                        className="text-xs text-stone-400 hover:text-stone-950 mb-2 transition-colors self-start"
                     >
                         ← Back
                     </button>
-                    <Card className="w-full max-w-md shadow-lg rounded-2xl bg-zinc-950 relative z-10 overflow-hidden">
-                        <div className="h-10 bg-orange-800" />
+                    <Card className="w-full max-w-md shadow-none rounded-2xl bg-white border border-stone-200 relative z-10 overflow-hidden">
+                        <div className="h-10 bg-orange-700" />
                         <CardHeader className="flex flex-col items-center gap-4 pt-4">
                             <TextLogo />
-                            <Avatar className="w-20 h-20 border border-primary/20">
+                            <Avatar className="w-20 h-20 border border-stone-200">
                                 <AvatarImage src={profile?.profile_picture_url
                                     ? `${backendStaticUP}/${profile.profile_picture_url}`
                                     : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png`
                                 } />
                             </Avatar>
-                            <h3>{profile.fullname}</h3>
+                            <h3 className="text-stone-950">{profile.fullname}</h3>
                             <div className="w-full space-y-3">
                                 <div className="grid grid-cols-2 gap-3">
                                     <div className="space-y-1">
-                                        <Label className="text-gray-400">Full Name</Label>
+                                        <Label className="text-stone-400">Full Name</Label>
                                         <Input
                                             disabled={isDisabled}
                                             onChange={(e) => setName(e.target.value)}
                                             value={fullname}
-                                            className="text-gray-200 placeholder-gray-500"
+                                            className="text-stone-950 bg-stone-100 border-stone-200 placeholder-stone-400"
                                         />
                                     </div>
                                     <div className="space-y-1">
-                                        <Label className="text-gray-400">Phone</Label>
+                                        <Label className="text-stone-400">Phone</Label>
                                         <Input
                                             disabled={isDisabled}
                                             onChange={(e) => setPhone(e.target.value.replace(/[^\d\s+]/g, ""))}
                                             value={phone}
-                                            className="text-gray-200 placeholder-gray-500"
+                                            className="text-stone-950 bg-stone-100 border-stone-200 placeholder-stone-400"
                                         />
                                     </div>
                                 </div>
                                 <div className="grid grid-cols-2 gap-3">
                                     <div className="space-y-1">
-                                        <Label className="text-gray-400">Password</Label>
+                                        <Label className="text-stone-400">Password</Label>
                                         <Input
                                             disabled={isDisabled}
                                             onChange={(e) => setPassword(e.target.value)}
                                             type="password"
                                             value={password || ""}
-                                            className="text-gray-200 placeholder-gray-500"
+                                            className="text-stone-950 bg-stone-100 border-stone-200 placeholder-stone-400"
                                         />
                                     </div>
                                     <div className="space-y-1">
-                                        <Label className="text-gray-400">Email</Label>
+                                        <Label className="text-stone-400">Email</Label>
                                         <Input
                                             disabled={isDisabled}
                                             onChange={(e) => setEmail(e.target.value)}
                                             value={email}
-                                            className="text-gray-200 placeholder-gray-500"
+                                            className="text-stone-950 bg-stone-100 border-stone-200 placeholder-stone-400"
                                         />
-
                                     </div>
                                 </div>
                                 <div className="space-y-1">
-                                    <Label className="text-gray-400">Address</Label>
+                                    <Label className="text-stone-400">Address</Label>
                                     <Input
                                         disabled={isDisabled}
                                         onChange={(e) => setAddress(e.target.value)}
                                         value={address || ""}
-                                        className="text-gray-200 placeholder-gray-500"
+                                        className="text-stone-950 bg-stone-100 border-stone-200 placeholder-stone-400"
                                     />
                                 </div>
                             </div>
                         </CardHeader>
-                        <CardFooter className="bg-zinc-950 justify-center gap-4 mt-6 pb-6">
+                        <CardFooter className="bg-white justify-center gap-4 mt-6 pb-6">
                             {isDisabled ? (
                                 <Button onClick={() => setIsDisabled(false)}
-                                    className="px-6 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all duration-200">
+                                    className="px-6 rounded-full bg-blue-700 text-stone-200 border border-stone-200 hover:bg-blue-500 transition-all duration-200">
                                     Edit
                                 </Button>
                             ) : (
                                 <>
                                     <Button onClick={() => setIsDisabled(true)}
-                                        className="px-6 rounded-full bg-gray-200 text-gray-800 hover:bg-gray-300 transition-all duration-200">
+                                        className="px-6 rounded-full bg-stone-100 text-stone-500 border border-stone-200 hover:bg-stone-200 transition-all duration-200">
                                         Cancel
                                     </Button>
                                     <Button onClick={changeProfileInfos}
-                                        className="px-6 rounded-full bg-green-600 text-white hover:bg-green-700 transition-all duration-200">
+                                        className="px-6 rounded-full bg-green-700 text-stone-200 border border-stone-200 hover:bg-green-500 transition-all duration-200">
                                         Save
                                     </Button>
                                 </>

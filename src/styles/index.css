@@ -57,6 +57,6 @@
 
   body {
     @apply text-foreground;
-    background-color: black;
+    background-color: white;
   }
 }

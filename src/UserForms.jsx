@@ -60,48 +60,42 @@ function UserForms() {
     return (
         <>
             {error && (
-                <div
-                    onAnimationEnd={() => setError("")}
-                    className="fixed top-6 left-1/2 -translate-x-1/2 bg-red-900/40 border border-red-500/30 text-red-400 text-xs px-4 py-2.5 rounded-xl animate-fade-out"
-                >
+                <div onAnimationEnd={() => setError("")} className="fixed top-6 left-1/2 -translate-x-1/2 bg-red-50 border border-red-200 text-red-800 text-xs px-4 py-2.5 rounded-xl animate-fade-out">
                     {error}
                 </div>
             )}
-            <div className="min-h-screen flex flex-col items-center px-4 pt-12">
+            <div className="min-h-screen flex flex-col items-center px-4 pt-12 bg-stone-200">
                 <div className="flex flex-col w-full max-w-xl">
-                    <button
-                        onClick={() => navigate(-1)}
-                        className="text-xs text-zinc-500 hover:text-white mb-6 transition-colors self-start"
-                    >
+                    <button onClick={() => navigate(-1)} className="text-xs text-stone-400 hover:text-stone-950 mb-6 transition-colors self-start">
                         ← Back
                     </button>
                     <div className="flex flex-col gap-3 w-full">
                         {forms.length === 0 ? (
-                            <div className="w-full text-center py-10 bg-zinc-950 border border-white/10 rounded-xl">
-                                <p className="text-sm text-zinc-500">No forms found.</p>
+                            <div className="w-full text-center py-10 bg-white border border-stone-200 rounded-xl">
+                                <p className="text-sm text-stone-400">No forms found.</p>
                             </div>
                         ) : (
                             forms.toReversed().map((form) => (
-                                <div key={form.id} className="w-full bg-zinc-950 border border-white/10 rounded-xl p-4">
+                                <div key={form.id} className="w-full bg-white border border-stone-200 rounded-xl p-4">
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center gap-3">
-                                            <div className="w-9 h-9 rounded-lg bg-zinc-800 flex items-center justify-center text-lg">
+                                            <div className="w-9 h-9 rounded-lg bg-stone-100 border border-stone-200 flex items-center justify-center text-lg">
                                                 🐾
                                             </div>
                                             <div>
-                                                <p className="text-sm font-medium text-white">Adoption #{form.adoption_list_id}</p>
-                                                <p className="text-xs text-zinc-500">List ID: {form.adoption_list_id}</p>
+                                                <p className="text-sm font-medium text-stone-950">Adoption #{form.adoption_list_id}</p>
+                                                <p className="text-xs text-stone-400">List ID: {form.adoption_list_id}</p>
                                             </div>
                                         </div>
                                         <button
                                             onClick={() => deleteForm(form.id)}
-                                            className="bg-black w-7 h-7 rounded-lg border border-white/10 flex items-center justify-center text-zinc-500 hover:text-red-400 transition-colors"
+                                            className="bg-stone-100 w-7 h-7 rounded-lg border border-stone-200 flex items-center justify-center text-stone-400 hover:text-red-800 transition-colors"
                                         >
                                             <Trash2 size={13} />
                                         </button>
                                     </div>
                                     {form.message && (
-                                        <p className="text-xs text-zinc-400 mt-3 pt-3 border-t border-white/8">
+                                        <p className="text-xs text-stone-500 mt-3 pt-3 border-t border-stone-200">
                                             {form.message}
                                         </p>
                                     )}

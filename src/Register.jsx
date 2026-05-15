@@ -71,35 +71,34 @@ function Register() {
             {error && (
                 <div
                     onAnimationEnd={() => setError("")}
-                    className="fixed top-6 left-1/2 -translate-x-1/2 bg-red-900/40 border border-red-500/30 text-red-400 text-xs px-4 py-2.5 rounded-xl animate-fade-out"
+                    className="fixed top-6 left-1/2 -translate-x-1/2 bg-red-50 border border-red-200 text-red-800 text-xs px-4 py-2.5 rounded-xl animate-fade-out"
                 >
                     {error}
                 </div>
             )}
-            <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
-                <div className="absolute w-96 h-96 bg-orange-600 rounded-full blur-3xl opacity-20 -top-20 -left-20" />
-                <div className="absolute w-96 h-96 bg-green-600 rounded-full blur-3xl opacity-20 -bottom-20 -right-20" />
+            <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-stone-200">
                 <div className="flex flex-col w-full max-w-sm">
                     <button
                         onClick={() => navigate(-1)}
-                        className="text-xs text-zinc-500 hover:text-white mb-2 transition-colors self-start"
+                        className="text-xs text-stone-400 hover:text-stone-950 mb-2 transition-colors self-start"
                     >
                         ← Back
                     </button>
-                    <Card className="w-full max-w-sm bg-black">
+                    <Card className="w-full max-w-sm bg-white border border-stone-200 shadow-none">
                         <CardHeader>
                             <TextLogo />
-                            <CardTitle>Register</CardTitle>
+                            <CardTitle className="text-stone-950">Register</CardTitle>
                             <CardDescription></CardDescription>
                         </CardHeader>
                         <CardContent className="flex flex-col gap-3">
                             <div className="grid grid-cols-2 gap-3">
                                 <div className="flex flex-col gap-1.5">
-                                    <Label>Full Name</Label>
+                                    <Label className="text-stone-400">Full Name</Label>
                                     <Input
                                         onChange={(e) => setName(e.target.value)}
                                         type="text"
                                         placeholder="Yuvaara"
+                                        className="bg-stone-100 border-stone-200 text-stone-950 placeholder:text-stone-400"
                                         onKeyDown={(e) => {
                                             if (!/^[a-zA-ZğüşıöçĞÜŞİÖÇ\s]$/.test(e.key) && e.key !== "Backspace") {
                                                 e.preventDefault();
@@ -108,48 +107,51 @@ function Register() {
                                     />
                                 </div>
                                 <div className="flex flex-col gap-1.5">
-                                    <Label>Phone</Label>
+                                    <Label className="text-stone-400">Phone</Label>
                                     <Input
                                         value={phone}
                                         type="text"
                                         placeholder="+90 (555) 000-0000"
+                                        className="bg-stone-100 border-stone-200 text-stone-950 placeholder:text-stone-400"
                                         onChange={(e) => setPhone(e.target.value.replace(/[^\d\s+]/g, ""))}
                                     />
                                 </div>
                             </div>
                             <div className="flex flex-col gap-1.5">
-                                <Label>Email</Label>
-                                <Input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="yuvaara@example.com" />
+                                <Label className="text-stone-400">Email</Label>
+                                <Input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="yuvaara@example.com" className="bg-stone-100 border-stone-200 text-stone-950 placeholder:text-stone-400" />
                             </div>
                             <div className="grid grid-cols-2 gap-3">
                                 <div className="flex flex-col gap-1.5">
-                                    <Label>Password</Label>
-                                    <Input onChange={(e) => setPassword(e.target.value)} minLength={6} maxLength={25} type="password" placeholder="••••••••" />
+                                    <Label className="text-stone-400">Password</Label>
+                                    <Input onChange={(e) => setPassword(e.target.value)} minLength={6} maxLength={25} type="password" placeholder="••••••••" className="bg-stone-100 border-stone-200 text-stone-950" />
                                 </div>
                                 <div className="flex flex-col gap-1.5">
-                                    <Label>Date of Birth</Label>
+                                    <Label className="text-stone-400">Date of Birth</Label>
                                     <Input
                                         value={dateOfBirth}
                                         onChange={(e) => setDateOfBirth(e.target.value)}
                                         max={new Date().toISOString().split("T")[0]}
                                         type="date"
+                                        className="bg-stone-100 border-stone-200 text-stone-950"
                                     />
                                 </div>
                             </div>
                             <div className="flex flex-col gap-1.5">
-                                <Label>Address</Label>
-                                <Input onChange={(e) => setAddress(e.target.value)} type="text" placeholder="Türkiye/Ankara" />
+                                <Label className="text-stone-400">Address</Label>
+                                <Input onChange={(e) => setAddress(e.target.value)} type="text" placeholder="Türkiye/Ankara" className="bg-stone-100 border-stone-200 text-stone-950 placeholder:text-stone-400" />
                             </div>
                             <div className="flex flex-col gap-1.5">
-                                <Label>Profile Picture</Label>
+                                <Label className="text-stone-400">Profile Picture</Label>
                                 <Input id="picture" type="file" ref={inputFileRef}
-                                    onChange={(event) => { setProfilePictureUrl(event.target.files[0]); }} />
+                                    onChange={(event) => { setProfilePictureUrl(event.target.files[0]); }}
+                                    className="bg-stone-100 border-stone-200 text-stone-950" />
                             </div>
-                            <Button onClick={handleRegister} className="w-full bg-green-800">Sign up</Button>
+                            <Button onClick={handleRegister} className="w-full bg-green-700 text-stone-200 border border-stone-200 hover:bg-green-600">Sign up</Button>
                         </CardContent>
-                        <CardFooter className="justify-center text-sm bg-black">
+                        <CardFooter className="justify-center text-sm bg-white text-stone-400">
                             Already have account?
-                            <Link to="/login" className="ml-1 text-foreground underline underline-offset-2 hover:opacity-80">
+                            <Link to="/login" className="ml-1 text-amber-900 underline underline-offset-2 hover:opacity-80">
                                 Sign in
                             </Link>
                         </CardFooter>

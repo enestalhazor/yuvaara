@@ -77,45 +77,35 @@ function Login() {
     return (
         <>
             {error && (
-                <div
-                    onAnimationEnd={() => setError("")}
-                    className="fixed top-6 left-1/2 -translate-x-1/2 bg-red-900/40 border border-red-500/30 text-red-400 text-xs px-4 py-2.5 rounded-xl animate-fade-out"
-                >
+                <div onAnimationEnd={() => setError("")} className="fixed top-6 left-1/2 -translate-x-1/2 bg-red-50 border border-red-200 text-red-800 text-xs px-4 py-2.5 rounded-xl animate-fade-out">
                     {error}
                 </div>
             )}
-            <div className="min-h-screen flex items-center justify-center relative overflow-hidden">
-                <div className="absolute w-96 h-96 bg-green-600 rounded-full blur-3xl opacity-20 -top-20 -left-20" />
-                <div className="absolute w-96 h-96 bg-orange-600 rounded-full blur-3xl opacity-20 -bottom-20 -right-20" />
+            <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-stone-200">
                 <div className="flex flex-col w-full max-w-sm">
-                    <button
-                        onClick={() => navigate(-1)}
-                        className="text-xs text-zinc-500 hover:text-white mb-2 transition-colors self-start"
-                    >
+                    <button onClick={() => navigate(-1)} className="text-xs text-stone-400 hover:text-stone-950 mb-2 transition-colors self-start">
                         ← Back
                     </button>
-                    <Card className="w-full max-w-sm bg-black">
+                    <Card className="w-full max-w-sm bg-white border border-stone-200 shadow-none">
                         <CardHeader>
                             <TextLogo />
-                            <CardTitle>Welcome</CardTitle>
-                            <CardDescription>Sign in</CardDescription>
+                            <CardTitle className="text-stone-950">Welcome</CardTitle>
+                            <CardDescription className="text-stone-400">Sign in</CardDescription>
                         </CardHeader>
                         <CardContent className="flex flex-col gap-4">
                             <div className="flex flex-col gap-1.5">
-                                <Label>Email</Label>
-                                <Input type="email" onChange={(e) => setEmail(e.target.value)} placeholder="yuvaara@example.com" />
+                                <Label className="text-stone-400">Email</Label>
+                                <Input type="email" onChange={(e) => setEmail(e.target.value)} placeholder="yuvaara@example.com" className="bg-stone-100 border-stone-200 text-stone-950 placeholder:text-stone-400" />
                             </div>
                             <div className="flex flex-col gap-1.5">
-                                <Label>Password</Label>
-                                <Input minLength={6} maxLength={25} type="password" onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" />
+                                <Label className="text-stone-400">Password</Label>
+                                <Input minLength={6} maxLength={25} type="password" onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" className="bg-stone-100 border-stone-200 text-stone-950" />
                             </div>
-                            <Button onClick={handleSubmit} className=" w-full bg-green-800">Sign in</Button>
+                            <Button onClick={handleSubmit} className="w-full bg-green-700 text-stone-200 border border-stone-800 hover:bg-green-600">Sign in</Button>
                         </CardContent>
-                        <CardFooter className="justify-center text-sm bg-black">
+                        <CardFooter className="justify-center text-sm bg-white text-stone-400">
                             Don't have an account?
-                            <Link to="/register" className="ml-1 text-foreground underline underline-offset-2 hover:opacity-80">
-                                Sign up
-                            </Link>
+                            <Link to="/register" className="ml-1 text-amber-900 underline underline-offset-2 hover:opacity-80">Sign up</Link>
                         </CardFooter>
                     </Card>
                 </div>

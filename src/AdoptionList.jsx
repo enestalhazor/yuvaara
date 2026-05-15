@@ -18,29 +18,21 @@ function AdoptionList() {
     };
 
     return (
-        <div className="min-h-screen bg-black px-4 pt-12">
+        <div className="min-h-screen bg-stone-200 px-4 pt-12">
             <div className="max-w-5xl mx-auto">
-                <button
-                    onClick={() => navigate(-1)}
-                    className="text-xs text-zinc-500 hover:text-white mb-6 transition-colors block"
-                >
+                <button onClick={() => navigate(-1)} className="text-xs text-stone-400 hover:text-stone-950 mb-6 transition-colors block">
                     ← Back
                 </button>
                 <div className="flex gap-6">
-                    <div className="flex-1 bg-zinc-950 border border-white/10 rounded-2xl overflow-hidden flex flex-col">
+                    <div className="flex-1 bg-white border border-stone-200 rounded-2xl overflow-hidden flex flex-col">
                         <div className="flex gap-4 p-6">
                             <div className="w-48 h-48 flex-shrink-0 rounded-xl overflow-hidden">
-                                <img
-                                    src={`${backendStaticPP}/${list.photo_url}`}
-                                    className="w-full h-full object-cover"
-                                />
+                                <img src={`${backendStaticPP}/${list.photo_url}`} className="w-full h-full object-cover" />
                             </div>
                             <div className="flex-1 flex flex-col">
                                 <div className="flex items-start justify-between mb-4">
-                                    <div>
-                                        <p className="text-xl font-semibold text-white">{list.name}</p>
-                                    </div>
-                                    <span className={statusColor[list.status] ?? "bg-gray-900/30 text-gray-400"}>
+                                    <p className="text-xl font-semibold text-stone-950">{list.name}</p>
+                                    <span className={statusColor[list.status] ?? "bg-stone-100 text-stone-400 text-xs px-3 py-1 rounded-full font-medium"}>
                                         {list.status}
                                     </span>
                                 </div>
@@ -53,9 +45,9 @@ function AdoptionList() {
                                         { label: "Color", value: list.color },
                                         { label: "Location", value: list.location },
                                     ].map(({ label, value }) => (
-                                        <div key={label} className="bg-zinc-900 rounded-xl p-3">
-                                            <p className="text-xs text-zinc-500 mb-1">{label}</p>
-                                            <p className="text-sm font-medium text-white">{value}</p>
+                                        <div key={label} className="bg-stone-100 rounded-xl p-3">
+                                            <p className="text-xs text-stone-400 mb-1">{label}</p>
+                                            <p className="text-sm font-medium text-stone-950">{value}</p>
                                         </div>
                                     ))}
                                 </div>
