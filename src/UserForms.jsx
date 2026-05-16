@@ -40,14 +40,8 @@ function UserForms() {
                     return;
                 }
                 else {
-                    res.text().then((text) => {
-                        try {
-                            const parsed = JSON.parse(text);
-                            setError(parsed.info || text);
-                        } catch {
-                            setError(text);
-                            console.log(text)
-                        }
+                    res.json().then(data => {
+                        setError(data.info)
                     })
                 }
             })
@@ -60,7 +54,7 @@ function UserForms() {
     return (
         <>
             {error && (
-                <div onAnimationEnd={() => setError("")} className="fixed top-6 left-1/2 -translate-x-1/2 bg-red-50 border border-red-200 text-red-800 text-xs px-4 py-2.5 rounded-xl animate-fade-out">
+                <div key={error} onAnimationEnd={() => setError("")} className="z-[9999] fixed top-6 left-1/2 -translate-x-1/2 bg-red-50 border border-red-200 text-red-800 text-xs px-4 py-2.5 rounded-xl animate-fade-out">
                     {error}
                 </div>
             )}
