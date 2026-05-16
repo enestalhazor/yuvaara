@@ -20,7 +20,7 @@ function Header() {
             return;
         }
 
-        fetch(`${backendBaseUrl}/adoptionlists/${term}`)
+        fetch(`${backendBaseUrl}/adoptionlists/${term.toLowerCase()}`)
             .then(res => {
                 if (res.status === 200) {
                     setError("")
