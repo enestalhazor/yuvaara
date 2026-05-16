@@ -44,7 +44,7 @@ function Form({ listId, status }) {
                 {success ? (
                     <div className="text-center py-6">
                         <p className="text-2xl mb-2">🐾</p>
-                        <p className="text-sm font-medium text-stone-950">Application sent!</p>
+                        <p className="text-sm font-medium text-green-700">Application sent!</p>
                     </div>
                 ) : (
                     <>

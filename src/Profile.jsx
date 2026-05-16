@@ -18,6 +18,7 @@ function Profile() {
     const [phone, setPhone] = useState(profile?.phone || "")
     const [address, setAddress] = useState(profile?.address || "")
     const [error, setError] = useState("")
+    const [success, setSuccess] = useState("")
 
     function changeProfileInfos() {
         const formData = new FormData()
@@ -46,6 +47,7 @@ function Profile() {
                 if (res.status === 200) {
                     setError("")
                     setIsDisabled(a => !a)
+                    setSuccess("Profile updated successfully")
                     return fetch(`${backendBaseUrl}/users/${profile.id}`, {
                         headers: { "Authorization": "Bearer " + token }
                     })
@@ -88,6 +90,15 @@ function Profile() {
                     className="z-[9999] fixed top-6 left-1/2 -translate-x-1/2 bg-red-50 border border-red-200 text-red-800 text-xs px-4 py-2.5 rounded-xl animate-fade-out"
                 >
                     {error}
+                </div>
+            )}
+            {success && (
+                <div
+                    key={success}
+                    onAnimationEnd={() => setSuccess("")}
+                    className="z-[9999] fixed top-6 left-1/2 -translate-x-1/2 bg-green-50 border border-green-200 text-green-800 text-xs px-4 py-2.5 rounded-xl animate-fade-out"
+                >
+                    {success}
                 </div>
             )}
             <div className="flex flex-col items-center min-h-screen p-6 bg-stone-200 relative overflow-hidden">

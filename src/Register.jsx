@@ -17,6 +17,7 @@ function Register() {
     const [password, setPassword] = useState("")
     const [address, setAddress] = useState("")
     const [dateOfBirth, setDateOfBirth] = useState("")
+    const [success, setSuccess] = useState("")
 
     const [profilePictureUrl, setProfilePictureUrl] = useState(null)
     const { navigate } = useContext(AppContext)
@@ -43,13 +44,14 @@ function Register() {
             .then(res => {
                 if (res.status === 200) {
                     setError("")
+                    setSuccess("Registration successful! Redirecting...")
                     setName("")
                     setEmail("")
                     setPassword("")
                     setProfilePictureUrl(null)
                     setDateOfBirth("")
                     inputFileRef.current.value = null
-                    navigate("/login")
+                    setTimeout(() => navigate("/login"), 2000)
                 }
                 else {
                     res.text().then((text) => {
@@ -72,6 +74,14 @@ function Register() {
                     className="z-[9999] fixed top-6 left-1/2 -translate-x-1/2 bg-red-50 border border-red-200 text-red-800 text-xs px-4 py-2.5 rounded-xl"
                 >
                     {error}
+                </div>
+            )}
+            {success && (
+                <div
+                    key={success}
+                    className="z-[9999] fixed top-6 left-1/2 -translate-x-1/2 bg-green-50 border border-green-200 text-green-800 text-xs px-4 py-2.5 rounded-xl"
+                >
+                    {success}
                 </div>
             )}
             <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-stone-200">

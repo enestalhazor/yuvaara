@@ -13,8 +13,8 @@ function AdoptionList() {
     }
 
     const statusColor = {
-        Available: "bg-green-900/30 text-green-400 rounded-lg",
-        Adopted: "bg-red-900/30 text-red-400 rounded-lg",
+        Available: "bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium",
+        Adopted: "bg-red-100 text-red-700 text-xs px-3 py-1 rounded-full font-medium",
     };
 
     return (
