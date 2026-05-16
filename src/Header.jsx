@@ -65,7 +65,7 @@ function Header() {
                             <Input
                                 onChange={(e) => setTerm(e.target.value)}
                                 type="search"
-                                placeholder="Search..."
+                                placeholder="Search by species..."
                                 className="h-7 w-32 sm:w-48 md:w-64 rounded-xl pr-8 bg-stone-100 border border-stone-200 text-stone-950 placeholder:text-stone-400"
                             />
                             <button onClick={() => doFilterLists()} className="absolute right-2 text-stone-400 hover:text-amber-600 transition-colors">

@@ -147,7 +147,7 @@ function Register() {
                             </div>
                             <div className="flex flex-col gap-1.5">
                                 <Label className="text-stone-400">Address</Label>
-                                <Input onChange={(e) => setAddress(e.target.value)} type="text" placeholder="Türkiye/Ankara" className="bg-stone-100 border-stone-200 text-stone-950 placeholder:text-stone-400" />
+                                <Input onChange={(e) => setAddress(e.target.value)} type="text" placeholder="Türkiye Ankara" className="bg-stone-100 border-stone-200 text-stone-950 placeholder:text-stone-400" />
                             </div>
                             <div className="flex flex-col gap-1.5">
                                 <Label className="text-stone-400">Profile Picture</Label>
