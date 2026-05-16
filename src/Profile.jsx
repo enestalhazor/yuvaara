@@ -124,7 +124,7 @@ function Profile() {
                                         <Label className="text-stone-400">Phone</Label>
                                         <Input
                                             disabled={isDisabled}
-                                            onChange={(e) => setPhone(e.target.value.replace(/[^\d\s+]/g, ""))}
+                                            onChange={(e) => setPhone(e.target.value.replace(/[^\d+]/g, ""))}
                                             value={phone}
                                             className="text-stone-950 bg-stone-100 border-stone-200 placeholder-stone-400"
                                         />

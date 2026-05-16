@@ -90,7 +90,7 @@ function Header() {
                                         Profile
                                     </div>
                                     <div className="px-4 py-2.5 text-sm text-stone-500 hover:bg-stone-100 hover:text-amber-900 cursor-pointer transition-colors rounded-lg mx-1" onClick={() => navigate("/forms")}>
-                                        My Forms
+                                        My Applications
                                     </div>
                                     <hr className="border-stone-200 my-1 mx-2" />
                                     <div className="px-4 py-2.5 text-sm text-red-800 hover:bg-stone-100 hover:text-red-800 cursor-pointer transition-colors rounded-lg mx-1" onClick={logOut}>

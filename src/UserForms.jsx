@@ -66,7 +66,7 @@ function UserForms() {
                     <div className="flex flex-col gap-3 w-full">
                         {forms.length === 0 ? (
                             <div className="w-full text-center py-10 bg-white border border-stone-200 rounded-xl">
-                                <p className="text-sm text-stone-400">No forms found.</p>
+                                <p className="text-sm text-stone-400">No applications found.</p>
                             </div>
                         ) : (
                             forms.toReversed().map((form) => (
@@ -78,7 +78,6 @@ function UserForms() {
                                             </div>
                                             <div>
                                                 <p className="text-sm font-medium text-stone-950">Adoption #{form.adoption_list_id}</p>
-                                                <p className="text-xs text-stone-400">List ID: {form.adoption_list_id}</p>
                                             </div>
                                         </div>
                                         <button

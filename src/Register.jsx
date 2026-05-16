@@ -109,9 +109,9 @@ function Register() {
                                     <Input
                                         value={phone}
                                         type="text"
-                                        placeholder="+90 (555) 000-0000"
+                                        placeholder="+905XXXXXXXXX"
                                         className="bg-stone-100 border-stone-200 text-stone-950 placeholder:text-stone-400"
-                                        onChange={(e) => setPhone(e.target.value.replace(/[^\d\s+]/g, ""))}
+                                        onChange={(e) => setPhone(e.target.value.replace(/[^\d+]/g, ""))}
                                     />
                                 </div>
                             </div>
@@ -148,7 +148,7 @@ function Register() {
                             <Button onClick={handleRegister} className="w-full bg-green-700 text-stone-200 border border-stone-200 hover:bg-green-600">Sign up</Button>
                         </CardContent>
                         <CardFooter className="justify-center text-sm bg-white text-stone-400">
-                            Already have account?
+                            Already have an account?
                             <Link to="/login" className="ml-1 text-amber-900 underline underline-offset-2 hover:opacity-80">
                                 Sign in
                             </Link>
